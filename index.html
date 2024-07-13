@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Dukun</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://png.pngtree.com/background/20230401/original/pngtree-marble-texture-black-fluid-mystical-background-picture-image_2248231.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: black;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .informasi {
+            text-align: center;
+            color: mediumslateblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <section id="konsultasi" class="form-container">
+            <h2 class="text-center mb-4">Konsultasi Dukun</h2>
+            <form id="konsultasiForm" class="border p-4 rounded bg-light">
+                <div class="form-group">
+                    <label for="nama">Nama:</label>
+                    <input type="text" class="form-control" id="nama" name="nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="pesan">Pesan:</label>
+                    <textarea class="form-control" id="pesan" name="pesan" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Kirim</button>
+            </form>
+            <div id="message" class="alert alert-success mt-3" style="display: none;"></div>
+        </section>
+        <div class="informasi">
+            <footer class="text-center mt-4">
+                <p>&copy; 2024 Aplikasi Dukun | Qeons.</p>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.getElementById('konsultasiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var nama = document.getElementById('nama').value;
+            var pesan = document.getElementById('pesan').value;
+
+            if (nama && pesan) {
+                var responses = [
+                    'Iya', 'Mungkin', 'Tidak', 'Coba lagi nanti', 'Hanya waktu yang akan menjawab',
+                    'Sangat mungkin', 'Sebaiknya pertimbangkan lagi', 'Pasti bisa', 'Tidak ada salahnya mencoba',
+                    'Keputusan ada di tanganmu', 'Lihatlah lebih dekat', 'Segera akan ada kabar baik',
+                    'Berpikir positif adalah kunci', 'Bersabarlah, semua akan terjawab', 'Percaya diri adalah kunci sukses',
+                    'Ada harapan di depan', 'Ini bukan akhir, tetapi awal baru'
+                ];
+
+                var response = responses[Math.floor(Math.random() * responses.length)];
+                
+                var messageElement = document.getElementById('message');
+                messageElement.style.display = 'block';
+                messageElement.textContent = response;
+            } else {
+                alert("Nama dan pesan harus diisi.");
+            }
+        });
+    </script>
+</body>
+</html>
